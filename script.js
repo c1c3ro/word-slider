@@ -12,6 +12,7 @@ var columns = 4;
 var wordsArray = [];
 var words;
 var wordsShuffled;
+var template;
 var imgOrder;
 var currTile;
 var otherTile; //blank tile
@@ -42,6 +43,9 @@ window.onload = function() {
             });
 
             splitted = splitted.flat(1);
+            template = splitted.flat(1);
+            template.push(" ");
+
             splitted = shuffle(splitted);
             splitted.push(" ");
 
@@ -170,4 +174,18 @@ function moveTiles() {
 
     turns += 1;
     document.getElementById("turns").innerText = turns;
+
+
+    var board = [...document.querySelectorAll(".tile")];
+    var boardWords = [];
+
+    board.forEach((letter) => {
+        boardWords.push(letter.innerHTML);
+    });
+
+    setTimeout(() => {
+        if (JSON.stringify(boardWords) === JSON.stringify(template)) {
+            alert("Parabéns! Você conseguiu!");
+        }
+    }, 1000);
 }
