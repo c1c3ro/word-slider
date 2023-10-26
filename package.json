@@ -1,0 +1,11 @@
+{
+  "name": "word-slider",
+  "version": "1.0.0",
+  "author": "Cícero José <cicerosousa205@gmail.com>",
+  "description": "A simple Word Slider game.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}

@@ -1,29 +1,66 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
     text-align: center;
     color: #0c67ae;
+    margin: 0;
+    max-width: 100%;
+    overflow-x:hidden;
 }
 
 #title {
     height: 150px;
-    width: 400px;
+    width: 360px;
+}
+
+h3{
+    font-size: 25px;
+    margin: 10px 0px 5px 0px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#words {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#words p{
+    font-weight: 600;
+    margin: 3px;
+    letter-spacing: 0.5em;
 }
 
 #board {
-    width: 360px;
-    height: 360px;
+    width: 320px;
+    height: 320px;
     background-color: lightblue;
     border: 10px solid #0c67ae;
 
-    margin: 0 auto;
+    margin: 25px auto;
     display: flex;
     flex-wrap: wrap;
 }
 
 #board div {
-    width: 88px;
-    height: 88px;
+    width: 78px;
+    height: 78px;
     border: 1px solid #0c67ae;
     cursor: pointer;
-    transition:left 0.3s,top 0.3s;
+    transition:left 0.5s,top 0.5s;
+}
+
+#board .tile {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.turns-title {
+    font-size: 20px;
 }

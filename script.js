@@ -1,14 +1,3 @@
-
-var rows = 4;
-var columns = 4;
-
-var currTile;
-var otherTile; //blank tile
-
-var turns = 0;
-
-var words = ["A", "M", "O", "R", "C", "A", "M", "A", "B", "O", "L", "A", "A", "S", "A"];
-
 const shuffle = (array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
       const j = Math.floor(Math.random() * (i + 1)); 
@@ -17,34 +6,84 @@ const shuffle = (array) => {
     return array; 
 }; 
 
-var wordsShuffled = shuffle(words);
-wordsShuffled.push(" ");
+var rows = 4;
+var columns = 4;
 
-var imgOrder = wordsShuffled;
+var wordsArray = [];
+var words;
+var wordsShuffled;
+var imgOrder;
+var currTile;
+var otherTile; //blank tile
+ 
+var turns = 0;
+
 
 window.onload = function() {
-    for (let r=0; r < rows; r++) {
-        for (let c=0; c < columns; c++) {
 
-            //<img id="0-0" src="1.jpg">
-            let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
-            tile.innerHTML = imgOrder.shift();
-            tile.draggable = "true";
 
-            //DRAG FUNCTIONALITY
-            tile.addEventListener("dragstart", dragStart);  //click an image to drag
-            tile.addEventListener("dragover", dragOver);    //moving image around while clicked
-            tile.addEventListener("dragenter", dragEnter);  //dragging image onto another one
-            tile.addEventListener("dragleave", dragLeave);  //dragged image leaving anohter image
-            tile.addEventListener("drop", dragDrop);        //drag an image over another image, drop the image
-            tile.addEventListener("dragend", dragEnd);      //after drag drop, swap the two tiles
-            tile.addEventListener("click", clickAction);      //swap tiles if the blank one is adjacent
+    fetch('http://127.0.0.1:5500/database/fourLetterDelas.json')
+    .then((response) => response.json())
+    .then((json) => {
 
-            document.getElementById("board").append(tile);
+        for (i=0; i<3; i++) wordsArray.push(json[Math.floor(Math.random() * json.length)]);
 
-        }
-    }
+        fetch('http://127.0.0.1:5500/database/threeLetterDelas.json')
+        .then((response) => response.json())
+        .then((json) => {
+
+            wordsArray.push(json[Math.floor(Math.random() * json.length)]);
+
+            words = wordsArray.flat(1);
+            
+            let splitted = words.map((word) => {
+                console.log(word);
+                return word.split('');
+            });
+
+            splitted = splitted.flat(1);
+            splitted = shuffle(splitted);
+            splitted.push(" ");
+
+            return splitted;
+
+        }).then((imgOrder) => {
+
+            for (i=0; i<4; i++){
+                let word = document.createElement("p");
+                word.innerHTML = words[i];
+                document.getElementById("words").append(word);
+            }
+            
+
+            for (let r=0; r < rows; r++) {
+                for (let c=0; c < columns; c++) {
+        
+                    //<img id="0-0" src="1.jpg">
+                    let tile = document.createElement("div");
+                    tile.id = r.toString() + "-" + c.toString();
+                    tile.className = "tile";
+                    tile.innerHTML = imgOrder.shift();
+                    tile.draggable = "true";
+        
+                    //DRAG FUNCTIONALITY
+                    tile.addEventListener("dragstart", dragStart);  //click an image to drag
+                    tile.addEventListener("dragover", dragOver);    //moving image around while clicked
+                    tile.addEventListener("dragenter", dragEnter);  //dragging image onto another one
+                    tile.addEventListener("dragleave", dragLeave);  //dragged image leaving anohter image
+                    tile.addEventListener("drop", dragDrop);        //drag an image over another image, drop the image
+                    tile.addEventListener("dragend", dragEnd);      //after drag drop, swap the two tiles
+                    tile.addEventListener("click", clickAction);      //swap tiles if the blank one is adjacent
+        
+                    document.getElementById("board").append(tile);
+        
+                }
+            }
+        });
+
+    });
+
+    
 }
 
 function dragStart() {

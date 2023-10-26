@@ -1,60 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Slide Puzzle</title>
+        <title>Word Slider</title>
+
+
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+
         <link rel="stylesheet" href="./style.css">
         <script src="./script.js"></script>
     </head>
 
     <body>
         <img id="title" src="./logo.png">
+
+        <h3> Palavras: <br> </h3>
+        <div class="wrapper">
+            <div id="words">
+
+            </div>
+        </div>
+
         <div id="board">
         </div>
-        <h1>Turns: <span id="turns">0</span></h1>
+
+        <h1 class="turns-title" >Contagem: <span id="turns">0</span></h1>
     </body>
 
     <script>
-
-        var fourLetters = [];
-        var pontuacao = [".", ",", "!", "?", ":", ";", "(", ")", "/", "'", '"', "´", '`'];
-        
-
-        fetch('http://127.0.0.1:5500/letras_mpb.json')
-        .then((response) => response.json())
-        .then((json) => {
-            json.forEach(element => {
-
-                let lyric = element["letras"].split(" ");
-
-                fourLetters.push(lyric.filter((word) => {
-
-                    if (word.length !== 4) return false;
-
-                    let check = true;
-
-                    pontuacao.forEach(pont => {
-                        if (word.includes(pont)) {
-                            check = false
-                        }
-                    });
-
-                    return check;
-                }));
-
-            });
-
-            var fourLettersConcat = fourLetters.flat(1);
-            var upperWrds = fourLettersConcat.map(element => {
-                return element.toUpperCase();
-            });
-            fourLetters = [...new Set(upperWrds)];
-            console.log(fourLetters);
-        });
-
-        // var  = fourLetters.flat(1);
-
         
     </script>
 
