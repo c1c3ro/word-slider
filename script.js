@@ -1,3 +1,26 @@
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 const shuffle = (array) => { 
     for (let i = array.length - 1; i > 0; i--) { 
       const j = Math.floor(Math.random() * (i + 1)); 
@@ -185,7 +208,31 @@ function moveTiles() {
 
     setTimeout(() => {
         if (JSON.stringify(boardWords) === JSON.stringify(template)) {
-            alert("Parabéns! Você conseguiu!");
+            var successAlert = document.querySelector(".successalert");
+            var reload = document.querySelector(".reload");
+            var container = document.querySelector(".container");
+            var record = document.querySelector(".record");
+            var recordCookie = getCookie("record");
+            var turns = document.getElementById("turns").innerText;
+
+            document.querySelector(".turns").innerText = turns;
+
+            if (!recordCookie) {
+                setCookie("record", turns, 365);
+            } else if (parseInt(recordCookie) < parseInt(turns)) {
+                record.innerText = recordCookie;
+            } else {
+                record.innerText = turns;
+                setCookie("record", turns, 365);
+            }
+
+            successAlert.classList.add("show");
+            container.classList.add("blur");
+
+            reload.addEventListener("click", function () {
+                location.reload();
+            });
+
         }
     }, 1000);
 }

@@ -5,33 +5,72 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Word Slider</title>
 
+        <link rel="icon" href="logo-icon.png">
+        <meta name="description" property="og:description" content="Brinque com as letras para formar as palavras, bata seu recorde!">
 
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="cookiealert.css">
+        <link rel="stylesheet" href="successalert.css">
+        
         <script src="./script.js"></script>
     </head>
 
     <body>
-        <img id="title" src="./logo.png">
 
-        <h3> Palavras: <br> </h3>
-        <div class="wrapper">
-            <div id="words">
-
+        <div class="container">
+            <div id="title">
+                <img alt="Logo do Word Slider" src="./word-slider-logo.webp">
             </div>
+
+            <h3> Palavras: <br> </h3>
+            <div class="wrapper">
+                <div id="words">
+
+                </div>
+            </div>
+
+            <div id="board">
+            </div>
+
+            <h1 class="turns-title" >Movimentos: <span id="turns">0</span></h1>
         </div>
 
-        <div id="board">
+        <div class="alert cookiealert" role="alert">
+        
+            <h4>Bem vindo ao Word Slider!</h4> <br>
+            
+            Clique ou arraste as letras adjacentes ao espaço em branco para trocá-los de lugar.
+            Seu objetivo é rearranjá-las a fim de formar as palavras na ordem <strong> exata </strong> em que aparecem na descrição. <br>
+            <br>
+            Utilizamos cookies para aprimorar a sua experiência. Ao clicar em "Continuar", você concorda com o uso de cookies.
+            
+            <div class="d-flex">
+                <button type="button" class="acceptcookies">
+                    Continuar
+                </button>
+            </div>
+            
         </div>
 
-        <h1 class="turns-title" >Contagem: <span id="turns">0</span></h1>
+        <div class="alert successalert" role="alert">
+        
+            <h4>Parabéns!</h4> <br>
+            <p>Você fez <span class="turns"> 0 </span> movimentos.</p>
+            <p>Seu recorde é <span class="record"> 0 </span>.</p>
+            
+            <div class="d-flex">
+                <button type="button" class="reload">
+                    Jogar novamente!
+                </button>
+            </div>
+            
+        </div>
+
     </body>
 
-    <script>
-        
-    </script>
+    <script src="cookiealert.js"></script>
 
 </html>

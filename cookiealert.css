@@ -1,0 +1,82 @@
+/*
+ * Bootstrap Cookie Alert by Wruczek
+ * https://github.com/Wruczek/Bootstrap-Cookie-Alert
+ * Released under MIT license
+ */
+.blur{
+    filter: blur(10px);
+}
+
+
+.d-flex {
+    display: flex;
+    margin-top: 25px;
+    justify-content: end;
+ }
+
+ .cookiealert {
+    /* flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    text-align: left;
+    line-height: 1.3em;
+ }
+
+.cookiealert h4 {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.cookiealert {
+    position: fixed;
+    bottom: 30vh;
+    width: 320px;
+    height: 250px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 10px;
+    transform: translateY(100%);
+    transition: all 500ms ease-out;
+    color: #ecf0f1;
+    background-color: var(--glaucous);
+    font-size: 13px;
+}
+
+.cookiealert.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+    /* transition-delay: 1000ms; */
+}
+
+.cookiealert .acceptcookies {
+    margin-left: 10px;
+    background-color: var(--antiflash-white);
+    color: var(--glaucous);
+}
+
+
+.cookiealert button, .cookiealert a {
+    vertical-align:baseline;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cookiealert button:focus, .cookiealert button:active, .cookiealert a:focus, .cookiealert a:active {
+    background-color: initial !important;
+}
+
+@media (min-width: 576px) {
+    .cookiealert {
+        width: 400px;
+    }
+}

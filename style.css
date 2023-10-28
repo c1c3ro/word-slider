@@ -1,15 +1,41 @@
+/* COLORS */
+
+:root {
+/* CSS HEX */
+    --xanthous: #ffc759ff;
+    --xanthous-lighter: #ffc75988;
+    --poppy: #d33e43ff;
+    --glaucous: #607196ff;
+    --french-gray: #babfd1ff;
+    --antiflash-white: rgb(246, 245, 245);
+}
+
+* {
+    letter-spacing: 0.8px;
+}
+
+
 body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     text-align: center;
-    color: #2a2a2a;
+    color: #333333;
     margin: 0;
     max-width: 100%;
     overflow-x:hidden;
+    height: 120vh;
+    background-color: white;
 }
 
 #title {
-    height: 150px;
-    width: 360px;
+    width: 330px;
+    padding: 15px 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title img {
+    width: 100%;
+    height: auto;
 }
 
 h3{
@@ -37,8 +63,8 @@ h3{
 #board {
     width: 320px;
     height: 320px;
-    background-color: lightblue;
-    border: 10px solid #0c67ae;
+    background-color: var(--xanthous-lighter);
+    border: 10px solid var(--poppy);
 
     margin: 25px auto;
     display: flex;
@@ -48,13 +74,13 @@ h3{
 #board div {
     width: 78px;
     height: 78px;
-    border: 1px solid #0c67ae;
+    border: 1px solid var(--poppy);
     cursor: pointer;
     transition:left 0.5s,top 0.5s;
 }
 
 #board .tile {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -62,5 +88,5 @@ h3{
 }
 
 .turns-title {
-    font-size: 20px;
+    font-size: 18px;
 }
