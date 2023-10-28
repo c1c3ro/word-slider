@@ -80,7 +80,7 @@ h3{
 }
 
 #board .tile {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     display: flex;
     justify-content: center;
