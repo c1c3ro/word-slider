@@ -3,9 +3,11 @@
 :root {
 /* CSS HEX */
     --xanthous: #ffc759ff;
-    --xanthous-lighter: #ffc75988;
+    --xanthous-lighter: #ffc75977;
     --poppy: #d33e43ff;
+    --poppy-lighter: #d33e4377;
     --glaucous: #607196ff;
+    --glaucous-lighter: #607196aa;
     --french-gray: #babfd1ff;
     --antiflash-white: rgb(246, 245, 245);
 }
@@ -22,7 +24,6 @@ body {
     margin: 0;
     max-width: 100%;
     overflow-x:hidden;
-    height: 120vh;
     background-color: white;
 }
 
@@ -61,8 +62,8 @@ h3{
 }
 
 #board {
-    width: 320px;
-    height: 320px;
+    width: 300px;
+    height: 300px;
     background-color: var(--xanthous-lighter);
     border: 10px solid var(--poppy);
 
@@ -72,8 +73,8 @@ h3{
 }
 
 #board div {
-    width: 78px;
-    height: 78px;
+    width: 73px;
+    height: 73px;
     border: 1px solid var(--poppy);
     cursor: pointer;
     transition:left 0.5s,top 0.5s;
@@ -87,6 +88,48 @@ h3{
     align-items: center;
 }
 
+.tile:hover, .tile:active, .tile:focus {
+    background-color: var(--french-gray);
+} 
+
 .turns-title {
     font-size: 18px;
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+footer {
+    font-size: 13px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.social-wrapper {
+    padding-top: 7px;
+    padding-bottom: 5px;
+}
+.social {
+    font-size: 24px;
+    color: #C13584;
+    text-decoration: none;
+    
+}
+
+.icon-instagram {
+    padding-bottom: 2px;
+}
+
+.icon-whatsapp{
+    margin-right:5px;
+    margin-left: -15px;
+    font-size: 29px;
+    color: #25d366;
 }
