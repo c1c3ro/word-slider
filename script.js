@@ -219,6 +219,7 @@ function moveTiles() {
 
             if (!recordCookie) {
                 setCookie("record", turns, 365);
+                record.innerText = turns;
             } else if (parseInt(recordCookie) < parseInt(turns)) {
                 record.innerText = recordCookie;
             } else {
