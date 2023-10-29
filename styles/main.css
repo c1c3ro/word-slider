@@ -7,7 +7,7 @@
     --poppy: #d33e43ff;
     --poppy-lighter: #d33e4377;
     --glaucous: #607196ff;
-    --glaucous-lighter: #607196aa;
+    --glaucous-lighter: #60719677;
     --french-gray: #babfd1ff;
     --antiflash-white: rgb(246, 245, 245);
 }
@@ -88,7 +88,7 @@ h3{
     align-items: center;
 }
 
-.tile:hover, .tile:active, .tile:focus {
+.tile:active, .tile:focus {
     background-color: var(--french-gray);
 } 
 
@@ -132,4 +132,10 @@ footer {
     margin-left: -15px;
     font-size: 29px;
     color: #25d366;
+}
+
+@media (min-width: 1000px) {
+    .tile:hover {
+        background-color: var(--french-gray);
+    }
 }

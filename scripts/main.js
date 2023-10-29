@@ -1,3 +1,5 @@
+// --------- Funções utilitárias -------------
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -29,19 +31,20 @@ const shuffle = (array) => {
     return array; 
 }; 
 
+// --------- Variáveis -------------
+
 var rows = 4;
 var columns = 4;
 
 var wordsArray = [];
 var words;
-var wordsShuffled;
 var template;
-var imgOrder;
 var currTile;
 var otherTile; //blank tile
  
 var turns = 0;
 
+// --------- Função principal -------------
 
 window.onload = function() {
 
@@ -58,23 +61,23 @@ window.onload = function() {
 
             wordsArray.push(json[Math.floor(Math.random() * json.length)]);
 
-            words = wordsArray.flat(1);
+            words = wordsArray.flat(1);  // Array de palavras
             
-            let splitted = words.map((word) => {
+            let splitted = words.map((word) => {  // Separando cada letra de cada palavra
                 console.log(word);
                 return word.split('');
             });
 
-            splitted = splitted.flat(1);
-            template = splitted.flat(1);
-            template.push(" ");
+            splitted = splitted.flat(1);  // Convertendo os arrays de letras num único array
+            template = splitted.flat(1);  // Variável para manter a ordem das letras para verificar se o usuário acertou
+            template.push(" "); // Adicionando o espaço em branco 
 
-            splitted = shuffle(splitted);
-            splitted.push(" ");
+            splitted = shuffle(splitted); // Embaralhando as letras
+            splitted.push(" "); // Adicionando o espaço em branco 
 
             return splitted;
 
-        }).then((imgOrder) => {
+        }).then((shuffledWords) => {
 
             for (i=0; i<4; i++){
                 let word = document.createElement("p");
@@ -90,7 +93,7 @@ window.onload = function() {
                     let tile = document.createElement("div");
                     tile.id = r.toString() + "-" + c.toString();
                     tile.className = "tile";
-                    tile.innerHTML = imgOrder.shift();
+                    tile.innerHTML = shuffledWords.shift();
                     tile.draggable = "true";
         
                     //DRAG FUNCTIONALITY
@@ -189,11 +192,11 @@ function dragEnd() {
 }
 
 function moveTiles() {
-    let currImg = currTile.innerHTML;
-    let otherImg = otherTile.innerHTML;
+    let currAux = currTile.innerHTML;
+    let otherAux = otherTile.innerHTML;
 
-    currTile.innerHTML = otherImg;
-    otherTile.innerHTML = currImg;
+    currTile.innerHTML = otherAux;
+    otherTile.innerHTML = currAux;
 
     turns += 1;
     document.getElementById("turns").innerText = turns;
@@ -211,19 +214,18 @@ function moveTiles() {
             var successAlert = document.querySelector(".successalert");
             var reload = document.querySelector(".reload");
             var container = document.querySelector(".container");
-            var record = document.querySelector(".record");
+            var recordText = document.querySelector(".record");
             var recordCookie = getCookie("record");
-            var turns = document.getElementById("turns").innerText;
 
-            document.querySelector(".turns").innerText = turns;
+            document.querySelector(".turns-success").innerText = turns;
 
             if (!recordCookie) {
                 setCookie("record", turns, 365);
-                record.innerText = turns;
-            } else if (parseInt(recordCookie) < parseInt(turns)) {
-                record.innerText = recordCookie;
+                recordText.innerText = turns;
+            } else if (parseInt(recordCookie) <= parseInt(turns)) {
+                recordText.innerText = recordCookie;
             } else {
-                record.innerText = turns;
+                recordText.innerText = turns;
                 setCookie("record", turns, 365);
             }
 
@@ -231,7 +233,8 @@ function moveTiles() {
             container.classList.add("blur");
 
             reload.addEventListener("click", function () {
-                location.reload();
+                document.querySelector(".loading").style.display = "block";
+                window.location.reload();
             });
 
         }

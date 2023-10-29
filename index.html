@@ -4,19 +4,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Word Slider</title>
+        <meta name="description" content="Clique ou arraste as letras adjacentes ao espaço em branco para trocá-los de lugar. Seu objetivo é rearranjá-las a fim de formar as palavras na ordem exata em que aparecem na descrição.">
 
-        <link rel="icon" href="logo-icon.png">
-        <meta property="og:image" content="https://word-slider.vercel.app/logo-icon.png">
-        <meta name="description" property="og:description" content="Brinque com as letras para formar as palavras, bata seu recorde!">
+        <link rel="icon" href="./assets/logo-icon.png">
+
+        <meta property="og:locale" content="pt_BR"/>
+        <meta property="og:title" content="Word Slider"/>
+        <meta property="og:image" content="https://word-slider.vercel.app/logo-icon.png"/>
+        <meta property="og:description" content="Clique ou arraste as letras adjacentes ao espaço em branco para trocá-los de lugar. Seu objetivo é rearranjá-las a fim de formar as palavras na ordem exata em que aparecem na descrição."/>
+        <meta property="og:url" content="https://word-slider.vercel.app/"/>
 
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="cookiealert.css">
-        <link rel="stylesheet" href="successalert.css">
+        <link rel="stylesheet" href="./styles/main.css">
+        <link rel="stylesheet" href="./styles/cookiealert.css">
+        <link rel="stylesheet" href="./styles/successalert.css">
         
-        <script src="./script.js"></script>
+        <script src="./scripts/main.js"></script>
     </head>
 
     <body>
@@ -24,7 +29,7 @@
         <div class="container">
             <main>
                 <div id="title">
-                    <img alt="Logo do Word Slider" src="./word-slider-logo.webp">
+                    <img alt="Logo do Word Slider" src="./assets/word-slider-logo.webp">
                 </div>
     
                 <h3> Palavras: <br> </h3>
@@ -85,19 +90,20 @@
         <div class="alert successalert" role="alert">
         
             <h4>Parabéns!</h4> <br>
-            <p>Você fez <span class="turns"> 0 </span> movimentos.</p>
-            <p>Seu recorde é <span class="record"> 0 </span>.</p>
+            <p>Você fez <span class="turns-success">0</span> movimentos.</p>
+            <p>Seu recorde é <span class="record">0</span>.</p>
             
             <div class="d-flex">
                 <button type="button" class="reload">
                     Jogar novamente!
                 </button>
+                <span class="loading">Carregando...</span>
             </div>
             
         </div>
 
     </body>
 
-    <script src="cookiealert.js"></script>
+    <script src="./scripts/cookiealert.js"></script>
 
 </html>

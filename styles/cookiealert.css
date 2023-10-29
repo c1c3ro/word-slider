@@ -15,11 +15,9 @@
  }
 
  .cookiealert {
-    /* flex-direction: column;
-    align-items: center;
-    justify-content: center; */
     text-align: left;
     line-height: 1.3em;
+    font-family: Montserrat !important;
  }
 
 .cookiealert h4 {
@@ -69,11 +67,9 @@
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
+    font-family: inherit;
 }
 
-.cookiealert button:focus, .cookiealert button:active, .cookiealert a:focus, .cookiealert a:active {
-    background-color: initial !important;
-}
 
 @media (min-width: 576px) {
     .cookiealert {
