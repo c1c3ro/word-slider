@@ -1,14 +1,14 @@
 var fourLetters = [];
 var pontuacao = [".", ",", "!", "?", ":", ";", "(", ")", "/", "'", '"', "´", "’", "«", "-", "[", "]", "{", "}", '`', "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "y", "Y", "w", "W"];
 
-fetch('http://127.0.0.1:5500/delas.json')
+fetch('http://127.0.0.1:5500/scripts/dicio-usp.json')
 .then((response) => response.json())
 .then((json) => {
     json.forEach(element => {
         var word;
 
         try {
-            word = element["canonical_form"];
+            word = element["a"];
             if (word.length == 3) fourLetters.push(word);
         } catch(e){
             console.log(e);
@@ -26,7 +26,7 @@ fetch('http://127.0.0.1:5500/delas.json')
     const fs = require('fs');
     const jsonContent = JSON.stringify(fourLetters);
 
-    fs.writeFile("./threeLetterDelas.json", jsonContent, 'utf8', function (err) {
+    fs.writeFile("./threeWords.json", jsonContent, 'utf8', function (err) {
         if (err) {
             return console.log(err);
         }

@@ -49,13 +49,13 @@ var turns = 0;
 window.onload = function() {
 
 
-    fetch('https://word-slider.vercel.app/database/fourLetterDelas.json')
+    fetch('https://word-slider.vercel.app/database/fourWords.json')
     .then((response) => response.json())
     .then((json) => {
 
         for (i=0; i<3; i++) wordsArray.push(json[Math.floor(Math.random() * json.length)]);
 
-        fetch('https://word-slider.vercel.app/database/threeLetterDelas.json')
+        fetch('https://word-slider.vercel.app/database/threeWords.json')
         .then((response) => response.json())
         .then((json) => {
 
